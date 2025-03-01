@@ -3016,7 +3016,7 @@ _c = App;
 const root = (0, _clientDefault.default).createRoot(document.getElementById('root'));
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
     fileName: "src/index.js",
-    lineNumber: 23,
+    lineNumber: 21,
     columnNumber: 13
 }, undefined));
 var _c;
@@ -32130,6 +32130,7 @@ function RestaurantMenu() {
     _s();
     let { id } = (0, _reactRouter.useParams)();
     const [RestData, setRestData] = (0, _react.useState)([]);
+    const [Selected, setSelected] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
         async function fetchData() {
             const proxyServer = "https://cors-anywhere.herokuapp.com/";
@@ -32144,21 +32145,57 @@ function RestaurantMenu() {
     }, []);
     console.log(RestData);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "w-[80%] mx-auto mt-20",
-        children: RestData.map((menuItems)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _menuCardDefault.default), {
-                menuItems: menuItems?.card?.card
-            }, menuItems?.card?.card?.title, false, {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "w-[80%] gap-5 mb-20 mt-20 mx-auto",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        className: `rounded-2xl px-8 py-2 mr-4 text-2xl ${Selected === 'Veg' ? "bg-green-800" : "bg-gray-500"}`,
+                        onClick: ()=>setSelected(Selected === 'Veg' ? null : 'Veg'),
+                        children: "Veg"
+                    }, void 0, false, {
+                        fileName: "src/components/RestaurantMenu.js",
+                        lineNumber: 34,
+                        columnNumber: 7
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        className: `rounded-2xl px-4 py-2 text-2xl ${Selected === 'Non-Veg' ? "bg-red-800" : "bg-gray-500"}`,
+                        onClick: ()=>setSelected(Selected === 'Non-Veg' ? null : 'Non-Veg'),
+                        children: "Non-Veg"
+                    }, void 0, false, {
+                        fileName: "src/components/RestaurantMenu.js",
+                        lineNumber: 36,
+                        columnNumber: 5
+                    }, this)
+                ]
+            }, void 0, true, {
                 fileName: "src/components/RestaurantMenu.js",
                 lineNumber: 33,
-                columnNumber: 39
-            }, this))
-    }, void 0, false, {
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "w-[80%] mx-auto mt-20",
+                children: RestData.map((menuItems)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _menuCardDefault.default), {
+                        menuItems: menuItems?.card?.card,
+                        foodSelected: Selected
+                    }, menuItems?.card?.card?.title, false, {
+                        fileName: "src/components/RestaurantMenu.js",
+                        lineNumber: 41,
+                        columnNumber: 39
+                    }, this))
+            }, void 0, false, {
+                fileName: "src/components/RestaurantMenu.js",
+                lineNumber: 39,
+                columnNumber: 9
+            }, this)
+        ]
+    }, void 0, true, {
         fileName: "src/components/RestaurantMenu.js",
-        lineNumber: 31,
-        columnNumber: 9
+        lineNumber: 32,
+        columnNumber: 7
     }, this);
 }
-_s(RestaurantMenu, "69gyfi7rP1TqqMOy8H2c3It7O8Q=", false, function() {
+_s(RestaurantMenu, "qPxFdCvVISi3jy6Wurkbjvr7iXM=", false, function() {
     return [
         (0, _reactRouter.useParams)
     ];
@@ -32187,7 +32224,7 @@ var _react = require("react");
 var _restInfo = require("./RestInfo");
 var _restInfoDefault = parcelHelpers.interopDefault(_restInfo);
 var _s = $RefreshSig$();
-function MenuCard({ menuItems }) {
+function MenuCard({ menuItems, foodSelected }) {
     _s();
     const [isOpen, setIsOpen] = (0, _react.useState)(true);
     if ("categories" in menuItems) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -32198,7 +32235,7 @@ function MenuCard({ menuItems }) {
                 children: menuItems.title
             }, void 0, false, {
                 fileName: "src/components/MenuCard.js",
-                lineNumber: 12,
+                lineNumber: 13,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -32206,18 +32243,18 @@ function MenuCard({ menuItems }) {
                         menuItems: items
                     }, items?.title, false, {
                         fileName: "src/components/MenuCard.js",
-                        lineNumber: 15,
+                        lineNumber: 16,
                         columnNumber: 58
                     }, this))
             }, void 0, false, {
                 fileName: "src/components/MenuCard.js",
-                lineNumber: 13,
+                lineNumber: 14,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/MenuCard.js",
-        lineNumber: 11,
+        lineNumber: 12,
         columnNumber: 13
     }, this);
     if (!isOpen) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -32231,7 +32268,7 @@ function MenuCard({ menuItems }) {
                         children: menuItems.title
                     }, void 0, false, {
                         fileName: "src/components/MenuCard.js",
-                        lineNumber: 27,
+                        lineNumber: 28,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -32240,28 +32277,143 @@ function MenuCard({ menuItems }) {
                         children: isOpen ? '^' : "\u2304"
                     }, void 0, false, {
                         fileName: "src/components/MenuCard.js",
-                        lineNumber: 28,
+                        lineNumber: 29,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/MenuCard.js",
-                lineNumber: 26,
+                lineNumber: 27,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "h-5 bg-gray-200 mt-2 mb-2"
             }, void 0, false, {
                 fileName: "src/components/MenuCard.js",
-                lineNumber: 30,
+                lineNumber: 31,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/MenuCard.js",
-        lineNumber: 25,
+        lineNumber: 26,
         columnNumber: 9
     }, this);
+    if (foodSelected === 'Veg') return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "w-full",
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "flex justify-between w-full",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                            className: "text-3xl font-bold mb-4",
+                            children: menuItems.title
+                        }, void 0, false, {
+                            fileName: "src/components/MenuCard.js",
+                            lineNumber: 41,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                            className: "text-5xl font-bold mr-20",
+                            onClick: ()=>setIsOpen(!isOpen),
+                            children: isOpen ? '^' : "\u02EF"
+                        }, void 0, false, {
+                            fileName: "src/components/MenuCard.js",
+                            lineNumber: 42,
+                            columnNumber: 13
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/MenuCard.js",
+                    lineNumber: 40,
+                    columnNumber: 13
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    children: menuItems?.itemCards?.filter((food)=>"isVeg" in food?.card?.info).map((items)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _restInfoDefault.default), {
+                            restData: items?.card?.info
+                        }, items?.card?.info?.id, false, {
+                            fileName: "src/components/MenuCard.js",
+                            lineNumber: 46,
+                            columnNumber: 101
+                        }, this))
+                }, void 0, false, {
+                    fileName: "src/components/MenuCard.js",
+                    lineNumber: 44,
+                    columnNumber: 13
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "h-5 bg-gray-200 mt-2 mb-2"
+                }, void 0, false, {
+                    fileName: "src/components/MenuCard.js",
+                    lineNumber: 49,
+                    columnNumber: 13
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "src/components/MenuCard.js",
+            lineNumber: 39,
+            columnNumber: 13
+        }, this)
+    }, void 0, false);
+    if (foodSelected === 'Non-Veg') return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            className: "w-full",
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "flex justify-between w-full",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                            className: "text-3xl font-bold mb-4",
+                            children: menuItems.title
+                        }, void 0, false, {
+                            fileName: "src/components/MenuCard.js",
+                            lineNumber: 60,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                            className: "text-5xl font-bold mr-20",
+                            onClick: ()=>setIsOpen(!isOpen),
+                            children: isOpen ? '^' : "\u02EF"
+                        }, void 0, false, {
+                            fileName: "src/components/MenuCard.js",
+                            lineNumber: 61,
+                            columnNumber: 13
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/MenuCard.js",
+                    lineNumber: 59,
+                    columnNumber: 13
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    children: menuItems?.itemCards?.filter((food)=>!("isVeg" in food?.card?.info)).map((items)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _restInfoDefault.default), {
+                            restData: items?.card?.info,
+                            foodSelected: foodSelected
+                        }, items?.card?.info?.id, false, {
+                            fileName: "src/components/MenuCard.js",
+                            lineNumber: 65,
+                            columnNumber: 104
+                        }, this))
+                }, void 0, false, {
+                    fileName: "src/components/MenuCard.js",
+                    lineNumber: 63,
+                    columnNumber: 13
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "h-5 bg-gray-200 mt-2 mb-2"
+                }, void 0, false, {
+                    fileName: "src/components/MenuCard.js",
+                    lineNumber: 68,
+                    columnNumber: 13
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "src/components/MenuCard.js",
+            lineNumber: 58,
+            columnNumber: 13
+        }, this)
+    }, void 0, false);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "w-full",
         children: [
@@ -32273,7 +32425,7 @@ function MenuCard({ menuItems }) {
                         children: menuItems.title
                     }, void 0, false, {
                         fileName: "src/components/MenuCard.js",
-                        lineNumber: 39,
+                        lineNumber: 78,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -32282,13 +32434,13 @@ function MenuCard({ menuItems }) {
                         children: isOpen ? '^' : "\u02EF"
                     }, void 0, false, {
                         fileName: "src/components/MenuCard.js",
-                        lineNumber: 40,
+                        lineNumber: 79,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/MenuCard.js",
-                lineNumber: 38,
+                lineNumber: 77,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -32296,25 +32448,25 @@ function MenuCard({ menuItems }) {
                         restData: items?.card?.info
                     }, items?.card?.info?.id, false, {
                         fileName: "src/components/MenuCard.js",
-                        lineNumber: 44,
+                        lineNumber: 83,
                         columnNumber: 56
                     }, this))
             }, void 0, false, {
                 fileName: "src/components/MenuCard.js",
-                lineNumber: 42,
+                lineNumber: 81,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "h-5 bg-gray-200 mt-2 mb-2"
             }, void 0, false, {
                 fileName: "src/components/MenuCard.js",
-                lineNumber: 47,
+                lineNumber: 86,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/MenuCard.js",
-        lineNumber: 37,
+        lineNumber: 76,
         columnNumber: 9
     }, this);
 }

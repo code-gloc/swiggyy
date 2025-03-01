@@ -8,6 +8,7 @@ export default function RestaurantMenu(){
     let {id} = useParams();
 
     const [RestData, setRestData] = useState([]);
+    const[Selected,setSelected]=useState(null);
 
     useEffect(()=>{
     
@@ -28,10 +29,18 @@ export default function RestaurantMenu(){
        console.log(RestData);
 
     return(
+      <div>
+      <div className="w-[80%] gap-5 mb-20 mt-20 mx-auto">
+      <button className={`rounded-2xl px-8 py-2 mr-4 text-2xl ${Selected === 'Veg' ? "bg-green-800" : "bg-gray-500"}`} 
+     onClick={() => setSelected(Selected === 'Veg' ? null : 'Veg')}>Veg</button>
+    <button className={`rounded-2xl px-4 py-2 text-2xl ${Selected === 'Non-Veg' ? "bg-red-800" : "bg-gray-500"}`} 
+    onClick={() => setSelected(Selected === 'Non-Veg' ? null : 'Non-Veg')}>Non-Veg</button>
+      </div>
         <div className="w-[80%] mx-auto mt-20">
           {
-            RestData.map((menuItems)=><MenuCard key={menuItems?.card?.card?.title} menuItems={menuItems?.card?.card}></MenuCard>)
+            RestData.map((menuItems)=><MenuCard key={menuItems?.card?.card?.title} menuItems={menuItems?.card?.card} foodSelected={Selected}></MenuCard>)
           }
+        </div>
         </div>
     )
 
