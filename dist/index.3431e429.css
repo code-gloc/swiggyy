@@ -860,6 +860,10 @@
     height: calc(var(--spacing) * 40);
   }
 
+  .h-42 {
+    height: calc(var(--spacing) * 42);
+  }
+
   .h-45 {
     height: calc(var(--spacing) * 45);
   }
@@ -1016,6 +1020,10 @@
     border-radius: var(--radius-3xl);
   }
 
+  .rounded-4xl {
+    border-radius: var(--radius-4xl);
+  }
+
   .rounded-xl {
     border-radius: var(--radius-xl);
   }
@@ -1136,6 +1144,10 @@
     padding-bottom: calc(var(--spacing) * 8);
   }
 
+  .pl-20 {
+    padding-left: calc(var(--spacing) * 20);
+  }
+
   .text-center {
     text-align: center;
   }
@@ -1198,6 +1210,14 @@
 
   .text-green-700 {
     color: var(--color-green-700);
+  }
+
+  .text-orange-500 {
+    color: var(--color-orange-500);
+  }
+
+  .text-orange-600 {
+    color: var(--color-orange-600);
   }
 
   .text-white {
